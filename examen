@@ -1,0 +1,38 @@
+#include "raylib.h"
+
+int main(void) {
+    const int screenWidth = 800;
+    const int screenHeight = 400;
+
+    InitWindow(screenWidth, screenHeight, "Circulo traslación");
+
+    SetTargetFPS(60);
+
+    float circlePostX = 400.0f;
+    float circlePostY = 200.0f;
+    float circleSpeedX = 150.0f;
+    float circleSpeedY = 70.0f;
+    float circleRadio = 50.0f;
+
+    while (!WindowShouldClose()) {
+
+        float deltaTime = GetFrameTime();
+        circlePostX += circleSpeedX *deltaTime;
+
+        if (circlePostX >= (screenWidth - circleRadio)){
+            circleSpeedX *= -1;
+        }else if (circlePostX < 0.0f){
+            circleSpeedX *= -1;
+        }
+
+        BeginDrawing();
+        ClearBackground(WHITE);
+        DrawCircle(circlePostX, circlePostY, circleRadio, DARKGREEN);
+
+        EndDrawing();
+    }
+
+    CloseWindow();
+    return 0;
+
+}
