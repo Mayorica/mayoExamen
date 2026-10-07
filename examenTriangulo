@@ -1,0 +1,32 @@
+#include "raylib.h"
+#include <math.h>
+
+int main(void) {
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+
+    InitWindow(screenWidth, screenHeight, "Triangulo escalación");
+
+    SetTargetFPS(60);
+
+    
+
+    Vector2 centro = { 400, 225 };
+     while (!WindowShouldClose()){
+
+        float escala = 1.0f + 0.5f * sinf(GetTime() * 2.0f);
+        Vector2 v1 = { centro.x, centro.y -85 * escala};
+        Vector2 v2 = { centro.x - 80 * escala, centro.y +75 * escala};
+        Vector2 v3 = { centro.x + 80 * escala, centro.y +75 * escala};
+
+        BeginDrawing();
+        ClearBackground(WHITE);
+        DrawTriangle(v1, v2, v3, SKYBLUE);
+
+
+        EndDrawing();
+     }
+
+     CloseWindow();
+     return 0;
+}
