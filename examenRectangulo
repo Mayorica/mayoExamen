@@ -1,0 +1,28 @@
+#include "raylib.h"
+
+int main(void) {
+    const int screenWidth = 800;
+    const int screenHeight = 400;
+
+    InitWindow(screenWidth, screenHeight, "Rectangulo rotación");
+
+    SetTargetFPS(60);
+
+    float angulo = 0.0f;
+
+     while (!WindowShouldClose()){
+
+        angulo += 90.0f * GetFrameTime();
+        Rectangle rec = { 400, 225, 200, 130};
+        Vector2 origen =  { rec.width / 2, rec.height / 2};
+        BeginDrawing();
+        ClearBackground(WHITE);
+        DrawRectanglePro(rec, origen, angulo, PURPLE);
+
+
+        EndDrawing();
+     }
+
+     CloseWindow();
+     return 0;
+}
